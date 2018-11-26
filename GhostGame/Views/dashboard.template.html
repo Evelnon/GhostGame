@@ -1,0 +1,12 @@
+﻿
+
+<span>{{dashboardCtrl.Title}}</span> 
+<div>Turn: {{dashboardCtrl.turn}}</div>
+<div>
+    <input type="text" ng-model="dashboardCtrl.prefix" />
+    <span>{{dashboardCtrl.prefix}}{{dashboardCtrl.word}}{{dashboardCtrl.suffix}}</span>
+    <input type="text"  ng-model="dashboardCtrl.suffix"/>
+</div>
+<div>
+    <input type="button" class="button" value="Send" ng-disabled="dashboardCtrl.prefix != undefined && dashboardCtrl.suffix != undefined" />
+</div>
