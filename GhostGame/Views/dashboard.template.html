@@ -21,8 +21,8 @@
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1">Letter</span>
                             <input type="text" ng-maxlength="1" ng-model="dashboardCtrl.suffix" ng-pattern="/^[a-zA-Z]*$/" required />
-                            <input type="button" class="btn btn-info" value="Guess Letter" ng-disabled="dashboardCtrl.suffix == undefined" ng-click="dashboardCtrl.testWS()" />
-                            <input type="button" class="btn btn-success" value="New Game" ng-disabled="dashboardCtrl.suffix != undefined" ng-click="dashboardCtrl.newGame()" />
+                            <input type="button" class="btn btn-info" value="Guess Letter" ng-disabled="dashboardCtrl.suffix == undefined || dashboardCtrl.suffix === ''" ng-click="dashboardCtrl.testWS()" />
+                            <input type="button" class="btn btn-success" value="New Game" ng-disabled="dashboardCtrl.suffix != undefined || dashboardCtrl.gameOver == false" ng-click="dashboardCtrl.newGame()" />
                         </div>
 
                     </div>      

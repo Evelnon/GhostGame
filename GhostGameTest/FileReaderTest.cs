@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using GhostGame.Src;
+﻿using GhostGame.Src.Sources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 
 namespace GhostGame.Tests
 {
@@ -10,17 +9,17 @@ namespace GhostGame.Tests
     public class FileReaderTest
     {
         private Mock<IReader> files = new Mock<IReader>();
-        public FileReaderTest()
+        [SetUp]
+        private void FileReader()
         {
-            string[] arrayList = { "hola", "holas", "holaaas", "holgazan" };
-            
+            string[] arrayList = { "hola", "holas", "holaaas", "holgazan" };            
             files.Setup(x => x.GetWordList()).Returns(() => arrayList);
         }
 
         [TestMethod]
         public void When_Reading_WordList_From_File_Source_Test()
         {
-            Assert.IsNotNull(files.Object.GetWordList());
+            NUnit.Framework.Assert.IsNotNull(files.Object.GetWordList());
         }
 
       

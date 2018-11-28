@@ -1,8 +1,9 @@
-﻿using System;
-using System.Linq;
-using GhostGame.Src;
+﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using GhostGame.Src.Rulesets;
+using GhostGame.Src.WordManagement;
+using GhostGame.Src.Sources;
 
 namespace GhostGame.Tests
 {
@@ -19,7 +20,7 @@ namespace GhostGame.Tests
             Mock<IReader> files = new Mock<IReader>();
             files.Setup(x => x.GetWordList()).Returns(() => arrayList);
             wordManager = new WordManager(files.Object, ruleSet);
-            wordManager.GetStartingWord();
+            wordManager.SetStartingWord();
         }
 
         [TestMethod]

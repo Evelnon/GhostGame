@@ -1,5 +1,5 @@
 ﻿
-namespace GhostGame.Src
+namespace GhostGame.Src.Scoring
 {
     public abstract class EntityScoring : IFailDecorator
     {

@@ -856,20 +856,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Src\Error.cs" />
-    <Compile Include="Src\FileReader.cs" />
+    <Compile Include="Src\AI\IIA.cs" />
+    <Compile Include="Src\AI\OptimalAI.cs" />
+    <Compile Include="Src\AI\RandomAI.cs" />
+    <Compile Include="Src\ErrorHandling\FileEmptyException.cs" />
+    <Compile Include="Src\Sources\FileReader.cs" />
     <Compile Include="Src\Game.cs" />
     <Compile Include="Src\GameStatus.cs" />
-    <Compile Include="Src\Ghost.cs" />
-    <Compile Include="Src\IFailDecorator.cs" />
-    <Compile Include="Src\IReader.cs" />
-    <Compile Include="Src\IRuleset.cs" />
-    <Compile Include="Src\IPlayer.cs" />
-    <Compile Include="Src\Player.cs" />
-    <Compile Include="Src\EntityScoring.cs" />
-    <Compile Include="Src\Score.cs" />
-    <Compile Include="Src\SuperGhost.cs" />
-    <Compile Include="Src\WordManager.cs" />
+    <Compile Include="Src\Rulesets\Ghost.cs" />
+    <Compile Include="Src\Scoring\IFailDecorator.cs" />
+    <Compile Include="Src\Rulesets\IRuleset.cs" />
+    <Compile Include="Src\Scoring\EntityScoring.cs" />
+    <Compile Include="Src\Scoring\Error.cs" />
+    <Compile Include="Src\Scoring\IPlayer.cs" />
+    <Compile Include="Src\Scoring\Player.cs" />
+    <Compile Include="Src\Scoring\Score.cs" />
+    <Compile Include="Src\Sources\IReader.cs" />
+    <Compile Include="Src\Rulesets\SuperGhost.cs" />
+    <Compile Include="Src\WordManagement\WordManager.cs" />
     <Compile Include="WebService\GameWS.asmx.cs">
       <DependentUpon>GameWS.asmx</DependentUpon>
       <SubType>Component</SubType>

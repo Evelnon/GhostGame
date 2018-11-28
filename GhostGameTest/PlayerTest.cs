@@ -1,5 +1,6 @@
 ﻿using System;
 using GhostGame.Src;
+using GhostGame.Src.Scoring;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GhostGame.Tests
@@ -11,7 +12,7 @@ namespace GhostGame.Tests
 
         [TestMethod]
         public void When_PlayerStarts_ScoreIs0_Test()
-        {           
+        {
             Assert.IsTrue(player.GetCurrentScore() == 0);
         }
 
@@ -19,13 +20,8 @@ namespace GhostGame.Tests
         public void When_PlayerFails_IncreaseScore_Test()
         {
             player.Fail();
-            Assert.IsTrue(player.GetCurrentScore() > 0);           
+            Assert.IsTrue(player.GetCurrentScore() > 0);
         }
-        //[TestMethod]
-        //public void When_PlayerFails_IncreaseScore_Test()
-        //{
-        //    player.Fail();
-        //    Assert.IsTrue(player.GetCurrentScore() > 0);
-        //}
+       
     }
 }

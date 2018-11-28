@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GhostGame.Src.ErrorHandling;
+using System;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Web;
 
-namespace GhostGame.Src
+namespace GhostGame.Src.Sources
 {
     public class FileReader : IReader
     {
@@ -29,8 +27,15 @@ namespace GhostGame.Src
         public void ReadFile()
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"File\ghostGameDict.txt");
+
             if (File.Exists(path))
-            { words = File.ReadAllLines(path); }
+            {
+                words = File.ReadAllLines(path);
+                if(words.Length == 0)
+                    throw new FileEmptyException();
+            }
+            else
+                throw new FileNotFoundException();
 
 
         }

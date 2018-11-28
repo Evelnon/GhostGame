@@ -1,8 +1,11 @@
-﻿using System;
+﻿
+using GhostGame.Src.Rulesets;
+using GhostGame.Src.Sources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GhostGame.Src
+namespace GhostGame.Src.WordManagement
 {
     public class WordManager
     {       
@@ -17,7 +20,7 @@ namespace GhostGame.Src
             this.rule = rule;
         }
 
-        public void GetStartingWord()
+        public void SetStartingWord()
         {
             var result = string.Empty;
             int index = rnd.Next(0, words.Count - 1);
@@ -28,13 +31,14 @@ namespace GhostGame.Src
 
         public bool CheckValidWord(string candidate)
         {
+            if (candidate == string.Empty)
+                return false;
+
             var potentialWord = currentWord + candidate;
 
             if (words.Any(x => x == potentialWord) || 
                 words.FindAll(x => x.StartsWith(potentialWord)).Count == 0)
             {
-                var tes1 = words.Any(x => x == potentialWord);
-                var tes2 = words.FindAll(x => x.StartsWith(potentialWord)).Count;
                 return false;
             }
            

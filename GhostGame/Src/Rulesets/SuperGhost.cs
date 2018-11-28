@@ -1,17 +1,17 @@
 ﻿
 
-namespace GhostGame.Src
+namespace GhostGame.Src.Rulesets
 {
-    public class Ghost : IRuleset
+    public class SuperGhost : IRuleset
     {
         public int GetStartingNumberOfLetters()
         {
-            return 3;
+            return 4;
         }
 
         public bool SetLettersInBothSides()
         {
-            return false;
+            return true;
         }
     }
 }

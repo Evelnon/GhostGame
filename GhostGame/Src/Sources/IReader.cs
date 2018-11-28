@@ -1,6 +1,6 @@
 ﻿
 
-namespace GhostGame.Src
+namespace GhostGame.Src.Sources
 {
     public interface IReader
     {

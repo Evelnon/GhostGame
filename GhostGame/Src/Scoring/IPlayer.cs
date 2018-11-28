@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GhostGame.Src
+namespace GhostGame.Src.Scoring
 {
     public interface IPlayer
     {
