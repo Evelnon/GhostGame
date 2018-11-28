@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace GhostGame.Src
@@ -11,7 +13,7 @@ namespace GhostGame.Src
 
         public FileReader()
         {
-           ReadFile();
+            ReadFile();
         }
 
         public string[] GetWordList()
@@ -26,7 +28,11 @@ namespace GhostGame.Src
 
         public void ReadFile()
         {
-            words = System.IO.File.ReadAllLines(@"File\ghostGameDict.txt");                  
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"File\ghostGameDict.txt");
+            if (File.Exists(path))
+            { words = File.ReadAllLines(path); }
+
+
         }
     }
 }

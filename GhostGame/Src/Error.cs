@@ -7,7 +7,6 @@ namespace GhostGame.Src
         public Error(IFailDecorator fail) : base(fail)
         {
 
-        }
-
+        }      
     }
 }

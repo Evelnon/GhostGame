@@ -17,13 +17,13 @@ namespace GhostGame.Src
             this.rule = rule;
         }
 
-        public string GetStartingWord()
+        public void GetStartingWord()
         {
             var result = string.Empty;
             int index = rnd.Next(0, words.Count - 1);
             result = words[index];
-            result = result.Substring(0, rule.GetStartingNumberOfLetters());
-            return result;
+            currentWord = result.Substring(0, rule.GetStartingNumberOfLetters());
+            
         }
 
         public bool CheckValidWord(string candidate)
@@ -32,8 +32,12 @@ namespace GhostGame.Src
 
             if (words.Any(x => x == potentialWord) || 
                 words.FindAll(x => x.StartsWith(potentialWord)).Count == 0)
+            {
+                var tes1 = words.Any(x => x == potentialWord);
+                var tes2 = words.FindAll(x => x.StartsWith(potentialWord)).Count;
                 return false;
-
+            }
+           
             currentWord = potentialWord;
             return true;
         }

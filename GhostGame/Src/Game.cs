@@ -1,56 +1,75 @@
 ﻿
 
+using System;
+
 namespace GhostGame.Src
 {
-    public class Game
+    public static class Game
     {
-        private static IReader WordsSource;
-        private static IRuleset ruleSet;
-        private static ITurn turn;       
-        private static WordManager wordManager;
-        Player human = new Player();
-        Player cpu = new Player();
+        static IReader WordsSource;
+        static IRuleset ruleSet;
+        static IPlayer turn;
+        static WordManager wordManager;
+        public static Player human;
+        public static Player cpu;     
 
-        public Game()
+        public static void NewGame()
         {
-            
             ruleSet = new Ghost();
             WordsSource = new FileReader();
             wordManager = new WordManager(WordsSource, ruleSet);
-            wordManager.GetStartingWord();
+            human = new Player(new Score());
+            cpu = new Player(new Score());
             turn = human;
-            
+            NewRound();
         }
-       
-        public void PlayerInput(string letter)
+
+        public static bool NewRound()
+        {
+            if (turn.GetCurrentScore() < 5)
+            {
+                wordManager.GetStartingWord();
+                turn = human;                
+            }
+            else
+                return false;
+            return true;
+                //Game Over
+        }
+
+        public static bool PlayerInput(string letter)
         {
             if (wordManager.CheckValidWord(letter) == false)
             {
                 turn.Fail();
-                
-            }
-            else
-            {
-                CpuInput();
+                return NewRound();
                 
             }
 
-            if (turn.GetCurrentScore() == 5)
-            {
-                //Game Over
-            }
-            else
-            {
-                turn = human;
-            }
-        }
-
-        public void CpuInput()
-        {
-            turn = cpu;
-            turn.EvaluateAnswer(wordManager.GetPotentialListOfWords(), wordManager.GetCurrentWord);
-            wordManager.CheckValidWord(turn.GetAnswer());
+            if (CpuInput() == false)
+            {                
+                return NewRound();
+                
+            } 
+            turn = human;
+            return true;
         }
         
+        public static string GetCurrentWord()
+        {
+            return wordManager.GetCurrentWord;
+        }
+
+        public static bool CpuInput()
+        {            
+            turn.EvaluateAnswer(wordManager.GetPotentialListOfWords(), wordManager.GetCurrentWord);
+            if (wordManager.CheckValidWord(turn.GetAnswer()) == false)
+            {
+                turn.Fail();
+                return false;
+            };
+            return true;
+        }
+
     }
 }

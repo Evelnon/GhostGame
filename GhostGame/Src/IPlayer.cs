@@ -2,7 +2,7 @@
 
 namespace GhostGame.Src
 {
-    public interface ITurn
+    public interface IPlayer
     {
         int GetCurrentScore();
         void Fail();

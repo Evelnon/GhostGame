@@ -3,8 +3,9 @@ namespace GhostGame.Src
 {
     public abstract class EntityScoring : IFailDecorator
     {
-        private int numberOfFails = 0;
+        //private int numberOfFails = 0;
         private IFailDecorator fail;
+        
 
         protected EntityScoring(IFailDecorator fail)
         {
